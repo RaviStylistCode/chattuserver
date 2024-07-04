@@ -12,7 +12,7 @@ import messageRouter from "./routes/messageRoute.js";
 const app = express();
 
 const option = {
-  origin:true,
+  origin:process.env.chattuclient || 'http://localhost:5173',
   credentials: true,
 };
 app.use(cors(option));
