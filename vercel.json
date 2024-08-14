@@ -1,5 +1,6 @@
 {
     "version":2,
+    "name":"Chattu Application",
     "builds":[
         {
             "src": "./index.js",

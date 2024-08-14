@@ -63,7 +63,7 @@ export const login = async (req, res) => {
   }
 
   const token = jwt.sign({ _id: user._id }, process.env.Token, {
-    expiresIn: "5d",
+    expiresIn: "15d",
   });
   const data = {
     _id: user._id,
@@ -74,7 +74,11 @@ export const login = async (req, res) => {
 
   return res
     .status(200)
-    .cookie("token", token, { maxAge: 5 * 24 * 60 * 60 * 1000, httpOnly: true })
+    .cookie("token", token, {
+       maxAge: 15 * 24 * 60 * 60 * 1000,
+       httpOnly: true,
+      secure:true,
+      sameSite:'none' })
     .json({
       success: true,
       message: `welcome back ${user.name}`,
